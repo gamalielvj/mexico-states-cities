@@ -1,9 +1,19 @@
 # README
 # Mexico-states-cities
 
-Simple web application (still working on it). I get all the data (JSON) of Mexico, States and Cities, and imported to a PostgreSQL database. Added a Person model just to interact with a form with filters select options by Country - States - Cities. (In this case is only Mexico, but you can add more data if you want, check it out ./db/seeds.rb).
+Simple web application (still working on it, mainly backend, I just want functionality).
+I get all the data (JSON) of Mexico, States and Cities, and imported to a PostgreSQL database. Added a Person model just to interact with a form with filters select options by Country - States - Cities. (In this case is only Mexico, but you can add more data if you want, check it out ./db/seeds.rb).
+
+What it does
+- CRUD (Countries - States - Cities)
+- CRUD (People)
+- Show page of a Country and it list the states its owns.
+- Show page of a State and it list the states its owns.
 
 [Source JSON](https://dr5hn.github.io/countries-states-cities-database/), thanks to [*drh5*](https://github.com/dr5hn).
+
+------------
+
 
 Things you may want to cover:
 
@@ -16,9 +26,9 @@ Things you may want to cover:
 
 #### Configuration
 
-#### Database creation
-
-#### Database initialization
+#### Database creation and initialization
     $ rails db:create
     $ rails db:schema:load
     $ rails db:seed`
+
+...
