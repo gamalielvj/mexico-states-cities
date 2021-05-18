@@ -4,8 +4,8 @@ class CitiesController < ApplicationController
   # GET /cities or /cities.json
   def index
     @cities = City.all
-    # fresh_when(@cities)
-    # ERROR: SQLite3::SQLException: no such column: updated_at: SELECT MAX(updated_at) FROM "cities"
+    #fresh_when(@cities)
+    # ERROR: no such column: updated_at: SELECT MAX(updated_at) FROM "cities"
   end
 
   # GET /cities/1 or /cities/1.json

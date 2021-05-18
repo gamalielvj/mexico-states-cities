@@ -8,12 +8,26 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <nav>
+    | <%= link_to "Home", root_path %> |
+    <%= link_to "People", people_path %> |
+    <%= link_to "Countries", countries_path %> |
+    <%= link_to "States", states_path %> |
+    <%= link_to "Cities", cities_path %> |
+    <hr>
+  </nav>
+  <br>
   <body>
     <%= yield %>
   </body>
   <br>
   <br>
-  <br>
-  <footer> <%= link_to "Home", root_path %> </footer>
+  <footer>
+    <hr>
+    | <%= link_to "Home", root_path %> |
+    <%= link_to "People", people_path %> |
+    <%= link_to "Countries", countries_path %> |
+    <%= link_to "States", states_path %> |
+    <%= link_to "Cities", cities_path %> |
+  </footer>
 </html>
