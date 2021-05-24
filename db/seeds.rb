@@ -6,9 +6,9 @@
 #State.delete_all
 #City.delete_all
 
-data_hash = JSON.parse(File.read('public/countries+states+citiesCA.json'))
+data_hash = JSON.parse(File.read('public/countries+states+citiesMX.json'))
 data_hash.each do |dh|
-      if dh["name"] == "Canada"
+      if dh["name"] == "Mexico"
         Country.create!(name: dh["name"], country_code: dh["iso2"] )
 
         @mxstates = dh['states']
