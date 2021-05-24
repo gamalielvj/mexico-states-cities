@@ -3,9 +3,27 @@ class CitiesController < ApplicationController
 
   # GET /cities or /cities.json
   def index
-    @cities = City.all
+    #@cities = City.all
     #fresh_when(@cities)
     # ERROR: no such column: updated_at: SELECT MAX(updated_at) FROM "cities"
+
+    # People _form Dropdown
+    if params[:state].present?
+        @cities = State.find(params[:state]).cities
+    else
+        @cities = City.all # Like "normal" index
+    end
+    if request.xhr?
+        respond_to do |format|
+            format.json {
+                render json: {cities: @cities}
+            }
+        end
+    end
+    #--------------------------
+
+
+
   end
 
   # GET /cities/1 or /cities/1.json

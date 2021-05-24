@@ -2,13 +2,13 @@
 #require 'json'
 
 # ///-----------------------  Works and tested ------------------
-Country.delete_all
-State.delete_all
-City.delete_all
+#Country.delete_all
+#State.delete_all
+#City.delete_all
 
-data_hash = JSON.parse(File.read('public/countries+states+citiesMX.json'))
+data_hash = JSON.parse(File.read('public/countries+states+citiesCA.json'))
 data_hash.each do |dh|
-      if dh["name"] == "Mexico"
+      if dh["name"] == "Canada"
         Country.create!(name: dh["name"], country_code: dh["iso2"] )
 
         @mxstates = dh['states']

@@ -1,5 +1,7 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: %i[ show edit update destroy ]
+  before_action :set_variables_for_location, only: [:new, :edit, :create, :update]
+
 
   # GET /people or /people.json
   def index
@@ -12,6 +14,7 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
+
     @person = Person.new
   end
 
@@ -56,6 +59,8 @@ class PeopleController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
@@ -66,4 +71,15 @@ class PeopleController < ApplicationController
     def person_params
       params.require(:person).permit(:name, :city_id, :state_id, :country_id)
     end
+
+    # Set variables for the _form
+    def set_variables_for_location
+      #@countries = Country.all.map{|country|[country.name, country.id]}
+      #@states = State.all.map{|state|[state.name, state.id]}
+      #@cities = City.all.map{|city|[city.name, city.id]}
+      @countries = Country.all
+      @states = State.all
+      @cities = City.all
+    end
+
 end

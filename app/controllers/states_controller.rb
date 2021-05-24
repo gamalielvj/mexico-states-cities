@@ -3,7 +3,24 @@ class StatesController < ApplicationController
 
   # GET /states or /states.json
   def index
-    @states = State.all
+    #@states = State.all
+
+    # People _form Dropdown
+    if params[:country].present?
+        @states = Country.find(params[:country]).states
+
+    else
+        @states = State.all # Like "normal" index
+    end
+    if request.xhr?
+        respond_to do |format|
+            format.json {
+                render json: {states: @states}
+            }
+        end
+    end
+    #--------------------------
+
   end
 
   # GET /states/1 or /states/1.json
@@ -55,6 +72,8 @@ class StatesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

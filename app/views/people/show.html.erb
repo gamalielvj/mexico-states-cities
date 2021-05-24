@@ -7,17 +7,17 @@
 
 <p>
   <strong>City:</strong>
-  <%= @person.city %>
+  <%= @person.city.name %>
 </p>
 
 <p>
   <strong>State:</strong>
-  <%= @person.state %>
+  <%= @person.state.name %>
 </p>
 
 <p>
   <strong>Country:</strong>
-  <%= @person.country %>
+  <%= @person.country.name %>
 </p>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |

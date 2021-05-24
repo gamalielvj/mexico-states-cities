@@ -6,7 +6,7 @@ I get all the data (JSON) of Mexico, States and Cities, and imported to a Postgr
 
 What it does
 - CRUD, Basic or default forms. (Countries - States - Cities)
-- CRUD, advance form. (People)
+- CRUD, advance form. Dynamic dependent drop down list with Jquery (People)
 - Show page of a Country and it list the states its owns.
 - Show page of a State and it list the states its owns.
 
@@ -29,6 +29,7 @@ Things you may want to cover:
 
 #### System dependencies
 - PostgreSQL
+- jquery-rails
 
 #### Configuration
 

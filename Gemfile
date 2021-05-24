@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Jquery
+gem 'jquery-rails'
+
+
 # Hirb on Rails console > Hirb.enable
 gem 'hirb'
 

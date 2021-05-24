@@ -18,17 +18,18 @@
 
   <div class="field">
     <%= form.label :country_id %>
-    <%= form.text_field :country_id %>
+    <%= form.collection_select :country_id, @countries,:id, :name, {:prompt => 'Please select a Country...'}%>
   </div>
 
   <div class="field">
     <%= form.label :state_id %>
-    <%= form.text_field :state_id %>
+    <%= form.collection_select :state_id, @states, :id, :name, {:prompt => 'Please select a State...'} %>
   </div>
 
   <div class="field">
     <%= form.label :city_id %>
-    <%= form.text_field :city_id %>
+    <%= form.collection_select :city_id, @cities, :id, :name, {:prompt => 'Please select a City...'} %>
+
   </div>
 
   <div class="actions">
