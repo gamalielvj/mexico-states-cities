@@ -8,7 +8,7 @@ What it does
 - CRUD, Basic or default forms. (Countries - States - Cities)
 - CRUD, advance form. Dynamic dependent drop down list with Jquery (People)
 - Show page of a Country and it list the states its owns.
-- Show page of a State and it list the states its owns.
+- Show page of a State and it list the cities its owns.
 
 
 What it doesn't do
@@ -30,6 +30,7 @@ Things you may want to cover:
 #### System dependencies
 - PostgreSQL
 - jquery-rails
+- semantic-ui-sass
 
 #### Configuration
 

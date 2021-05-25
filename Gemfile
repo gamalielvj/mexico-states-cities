@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Jquery
 gem 'jquery-rails'
+# Semantic UI
+gem 'semantic-ui-sass'
 
 
 # Hirb on Rails console > Hirb.enable

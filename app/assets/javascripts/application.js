@@ -15,4 +15,15 @@
 //= require turbolinks
 //= require jquery
 //= require peopleform
+//= require semantic-ui
 //= require_tree .
+
+$(document).on('turbolinks:load', function()
+ {
+  // Person form dropdowns
+  $('.dropdown').dropdown();
+
+  // $('#person_state_id').addClass("ui fluid search selection dropdown")
+  //   .dropdown();
+
+})
