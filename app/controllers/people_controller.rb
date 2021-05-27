@@ -78,8 +78,11 @@ class PeopleController < ApplicationController
       #@states = State.all.map{|state|[state.name, state.id]}
       #@cities = City.all.map{|city|[city.name, city.id]}
       @countries = Country.all
-      @states = State.all
-      @cities = City.all
+      #@states = State.all
+      #@cities = City.all
+      # Fill empty for the first load new person, edit person fails (empties fields). maybe if params present
+      @states = []
+      @cities = []
     end
 
 end

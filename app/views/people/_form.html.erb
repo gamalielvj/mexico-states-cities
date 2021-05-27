@@ -14,26 +14,66 @@
 
   <div class="field">
     <%= form.label :country_id %>
-    <%= form.collection_select :country_id, @countries,:id, :name, options = {:prompt => 'Select a Country...'},
+    <%= form.collection_select :country_id, @countries,:id, :name, options = {:prompt => 'Please select a Country...'},
     html_options = {class: "ui fluid search selection dropdown"}%>
   </div>
 
   <div class="field">
     <%= form.label :state_id %>
-    <%= form.collection_select :state_id, @states, :id, :name, {:prompt => 'Please select a State...'},
+    <%= form.collection_select :state_id, @states, :id, :name, {:prompt => 'Please select a Country first...'},
     html_options = {class: "ui fluid search selection dropdown"} %>
   </div>
 
   <div class="field">
     <%= form.label :city_id %>
-    <%= form.collection_select :city_id, @cities, :id, :name, {:prompt => 'Please select a City...'},
+    <%= form.collection_select :city_id, @cities, :id, :name, {:prompt => 'Please select a Country and State first...'},
     html_options = {class: "ui fluid search selection dropdown"} %>
 
   </div>
 
 
+    <div class="field">
+      <label>Country</label>
+      <div class="ui fluid search selection dropdown">
+        <input type="hidden" name="country">
+        <i class="dropdown icon"></i>
+        <div class="default text">Select Country</div>
+        <div class="menu">
+          <div class="item" data-value="au"><i class="au flag"></i>Australia</div>
+          <div class="item" data-value="be"><i class="be flag"></i>Belgium</div>
+          <div class="item" data-value="ca"><i class="ca flag"></i>Canada</div>
+          <div class="item" data-value="dk"><i class="dk flag"></i>Denmark</div>
+          <div class="item" data-value="gb"><i class="gb flag"></i>England</div>
+          <div class="item" data-value="fr"><i class="fr flag"></i>France</div>
+          <div class="item" data-value="de"><i class="de flag"></i>Germany</div>
+          <div class="item" data-value="hk"><i class="hk flag"></i>Hong Kong</div>
+          <div class="item" data-value="it"><i class="it flag"></i>Italy</div>
+          <div class="item" data-value="jp"><i class="jp flag"></i>Japan</div>
+          <div class="item" data-value="ke"><i class="ke flag"></i>Kenya</div>
+          <div class="item" data-value="lu"><i class="lu flag"></i>Luxembourg</div>
+          <div class="item" data-value="mx"><i class="mx flag"></i>Mexico</div>
+          <div class="item" data-value="nl"><i class="nl flag"></i>Netherlands</div>
+          <div class="item" data-value="om"><i class="om flag"></i>Oman</div>
+          <div class="item" data-value="pt"><i class="pt flag"></i>Portugal</div>
+          <div class="item" data-value="qa"><i class="qa flag"></i>Qatar</div>
+          <div class="item" data-value="ru"><i class="ru flag"></i>Russia</div>
+          <div class="item" data-value="sg"><i class="sg flag"></i>Singapore</div>
+          <div class="item" data-value="kr"><i class="kr flag"></i>South Korea</div>
+          <div class="item" data-value="tw"><i class="tw flag"></i>Taiwan</div>
+          <div class="item" data-value="us"><i class="us flag"></i>United States</div>
+          <div class="item" data-value="vn"><i class="vn flag"></i>Vietnam</div>
+          <div class="item" data-value="eh"><i class="eh flag"></i>Western Sahara</div>
+          <div class="item" data-value="ye"><i class="ye flag"></i>Yemen</div>
+          <div class="item" data-value="zw"><i class="zw flag"></i>Zimbabwe</div>
+        </div>
+      </div>
+    </div>
+
+
+
+
   <div class="actions">
-      <%= form.submit %>
+    <%= form.submit %>
   </div>
   <% end %>
 

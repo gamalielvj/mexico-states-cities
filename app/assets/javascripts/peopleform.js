@@ -1,34 +1,39 @@
 $(document).on('turbolinks:load', function()
  {
-  $("#person_state_id").prop("disabled", true); // States dropdown is disable while Country dropdown is empty
-  $("#person_city_id").prop("disabled", true); // Cities dropdown is disable while State dropdown is empty
+  // Disable true false works without Semantic UI dropdown class. Thats why all commented
+  //$("#person_state_id").prop("disabled", true); // States dropdown is disable while Country dropdown is empty
+  //$("#person_city_id").prop("disabled", true); // Cities dropdown is disable while State dropdown is empty
+
 
   // Country - States    WORKS
   $("#person_country_id").change(function(){
     	var country = $(this).val();
-      console.log(country);
+      console.log("Country id: " + country);
     	if(country == ''){
         //console.log("if country == ");
         // Disable States dropdown
-          $("#person_state_id").empty();
-          $("#person_state_id").prop("disabled", true);
-          $("#person_state_id").val('');
-          $("#person_state_id").append('<option>Please select a City...</option>');        // Disable Cities dropdown
+           $("#person_state_id").empty();
+           //$("#person_state_id").prop("disabled", true);
+           $("#person_state_id").val('');
+           $("#person_state_id").append('<option>Please select a State...</option>');        // Disable Cities dropdown
 
         // Disable Cities dropdown
           $("#person_city_id").empty();
+          //$("#person_city_id").prop("disabled", true);
           $("#person_city_id").val('');
-          $("#person_city_id").append('<option>Please select a City...</option>');
-          $("#person_city_id").prop("disabled", true);
+          $("#person_city_id").append('<option>Please select a State first...</option>');
+
 
     	}else{
 
-          $("#person_state_id").prop("disabled", false);
+          //$("#person_state_id").prop("disabled", false);
+          $("#person_state_id").append('<option>Please select a State...</option>');
+          //console.log("Country - States (Enable)")
 
         // Disable Cities dropdown
           $("#person_city_id").empty();
-          $("#person_city_id").append('<option>Please select a City...</option>');
-          $("#person_city_id").prop("disabled", true);
+          $("#person_city_id").append('<option>Please select a State first...</option>');
+          //$("#person_city_id").prop("disabled", true);
 
     	//}
     	$.ajax({
@@ -42,9 +47,10 @@ $(document).on('turbolinks:load', function()
   	    success: function (response) {
   	      	console.log(response);
   	      	var states = response["states"];
-  	      	$("#person_state_id").empty();
+            $("#person_state_id").empty();
+            $("#person_state_id").val('');
+            $("#person_state_id").append('<option>Please select a State...</option>');
 
-  	      	$("#person_state_id").append('<option>Please select a State...</option>');
   	      	for(var i = 0; i < states.length; i++){
   	      		$("#person_state_id").append('<option value="' + states[i]["id"] + '">' + states[i]["name"] + '</option>');
   	      	}
@@ -53,7 +59,7 @@ $(document).on('turbolinks:load', function()
     }; // End Else
   });
 
-  // States - Cities   No works when select option "Please select a State..."
+  // States - Cities "
   $("#person_state_id").change(function(){
     	var state = $(this);
       var country = $("#person_country_id");
@@ -67,11 +73,11 @@ $(document).on('turbolinks:load', function()
           $("#person_city_id").empty();
           $("#person_city_id").val('');
           $("#person_city_id").append('<option>Please select a City...</option>');
-          $("#person_city_id").prop("disabled", true);
+          //$("#person_city_id").prop("disabled", true);
 
 
     	}else{
-    		$("#person_city_id").prop("disabled", false);
+    		//$("#person_city_id").prop("disabled", false);
     	//}
     	$.ajax({
   	    url: "/cities",
