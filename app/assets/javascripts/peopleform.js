@@ -1,12 +1,20 @@
 $(document).on('turbolinks:load', function()
  {
-  // Disable true false works without Semantic UI dropdown class. Thats why all commented
+  // .prop Disable true false works without Semantic UI dropdown class. Thats why all add .parent.
   //$("#person_state_id").prop("disabled", true); // States dropdown is disable while Country dropdown is empty
   //$("#person_city_id").prop("disabled", true); // Cities dropdown is disable while State dropdown is empty
 
 
+  // Disable Dropdowns,
+  //$("#person_state_id").parent('div').addClass("disabled");
+  $("#person_state_id").prop("disabled", true);
+  //$("#person_city_id").parent('div').addClass("disabled");
+  $("#person_city_id").prop("disabled", true);
+
+
   // Country - States    WORKS
   $("#person_country_id").change(function(){
+      $(this).addClass( "selected" );
     	var country = $(this).val();
       console.log("Country id: " + country);
     	if(country == ''){
@@ -25,6 +33,19 @@ $(document).on('turbolinks:load', function()
 
 
     	}else{
+        //$("#person_state_id").prop("disabled", false);
+        //$("div.ui.fluid.search.selection.dropdown.disabled").removeClass("disabled");
+        //$(".field.disabled").removeClass("disabled");
+
+
+        //Works
+        //$(".field.state").removeClass("disabled");
+        $("#person_state_id").parent().removeClass("disabled");
+        $("#person_state_id").prop("disabled", false);
+
+        //$("#person_state_id").parent('div').removeClass("disabled");
+        //$("#person_city_id").parent('div').removeClass("disabled");
+
 
           //$("#person_state_id").prop("disabled", false);
           $("#person_state_id").append('<option>Please select a State...</option>');
@@ -72,12 +93,15 @@ $(document).on('turbolinks:load', function()
         // Disable Cities dropdown
           $("#person_city_id").empty();
           $("#person_city_id").val('');
-          $("#person_city_id").append('<option>Please select a City...</option>');
+          $("#person_city_id").append('<option>Please select a State first...</option>');
           //$("#person_city_id").prop("disabled", true);
 
 
     	}else{
-    		//$("#person_city_id").prop("disabled", false);
+        //$(".field.city").removeClass("disabled");
+        $("#person_city_id").parent('div').removeClass("disabled");
+        $("#person_city_id").prop("disabled", false);
+
     	//}
     	$.ajax({
   	    url: "/cities",

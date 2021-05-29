@@ -12,19 +12,19 @@
     </div>
 
 
-  <div class="field">
+  <div class="field country">
     <%= form.label :country_id %>
     <%= form.collection_select :country_id, @countries,:id, :name, options = {:prompt => 'Please select a Country...'},
     html_options = {class: "ui fluid search selection dropdown"}%>
   </div>
 
-  <div class="field">
+  <div class="field state">
     <%= form.label :state_id %>
     <%= form.collection_select :state_id, @states, :id, :name, {:prompt => 'Please select a Country first...'},
     html_options = {class: "ui fluid search selection dropdown"} %>
   </div>
 
-  <div class="field">
+  <div class="field city">
     <%= form.label :city_id %>
     <%= form.collection_select :city_id, @cities, :id, :name, {:prompt => 'Please select a Country and State first...'},
     html_options = {class: "ui fluid search selection dropdown"} %>
