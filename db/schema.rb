@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_16_224741) do
+ActiveRecord::Schema.define(version: 2021_05_30_153359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,16 +27,6 @@ ActiveRecord::Schema.define(version: 2021_05_16_224741) do
     t.string "country_code"
   end
 
-  create_table "states", force: :cascade do |t|
-    t.string "name"
-    t.string "state_code"
-    t.bigint "country_id"
-    t.index ["country_id"], name: "index_states_on_country_id"
-  end
-
-  add_foreign_key "cities", "states", column: "state_id"
-  add_foreign_key "states", "countries", column: "country_id"
-
   create_table "people", force: :cascade do |t|
     t.string "name"
     t.integer "city_id"
@@ -44,5 +34,16 @@ ActiveRecord::Schema.define(version: 2021_05_16_224741) do
     t.integer "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "time_zone", default: "UTC"
   end
+
+  create_table "states", force: :cascade do |t|
+    t.string "name"
+    t.string "state_code"
+    t.bigint "country_id"
+    t.index ["country_id"], name: "index_states_on_country_id"
+  end
+
+  add_foreign_key "cities", "states"
+  add_foreign_key "states", "countries"
 end

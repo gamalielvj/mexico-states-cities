@@ -8,14 +8,18 @@ class StatesController < ApplicationController
     # People _form Dropdown
     if params[:country].present?
         @states = Country.find(params[:country]).states
-
+        @country_code = Country.find(params[:country]).country_code
+        @zones_by_country = ActiveSupport::TimeZone.country_zones(@country_code)
     else
         @states = State.all # Like "normal" index
     end
     if request.xhr?
         respond_to do |format|
             format.json {
-                render json: {states: @states}
+                render json: {
+                              states: @states,
+                              zones: @zones_by_country
+                              }
             }
         end
     end

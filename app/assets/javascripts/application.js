@@ -23,6 +23,7 @@ $(document).on('turbolinks:load', function()
   // Person form dropdowns
   //$('.dropdown').dropdown();
   $('.ui.dropdown').dropdown();
+  
   //$('#person_state_id').addClass("ui fluid search selection dropdown")
   //   .dropdown();
 

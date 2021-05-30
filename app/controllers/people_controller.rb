@@ -1,6 +1,8 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: %i[ show edit update destroy ]
   before_action :set_variables_for_location, only: [:new, :edit, :create, :update]
+  before_action :set_variables_for_time_zone, only: [:new, :edit, :create, :update]
+
 
 
   # GET /people or /people.json
@@ -14,7 +16,6 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
-
     @person = Person.new
   end
 
@@ -61,6 +62,9 @@ class PeopleController < ApplicationController
 
 
 
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
@@ -69,7 +73,7 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:name, :city_id, :state_id, :country_id)
+      params.require(:person).permit(:name, :city_id, :state_id, :country_id, :time_zone)
     end
 
     # Set variables for the _form
@@ -84,5 +88,14 @@ class PeopleController < ApplicationController
       @states = []
       @cities = []
     end
+
+    def set_variables_for_time_zone
+      #@zones_mx = ActiveSupport::TimeZone.country_zones('MX')
+      #@zones_mx = ActiveSupport::TimeZone.country_zones(Country.first.country_code)
+
+      @zones_by_country = ActiveSupport::TimeZone.all
+      
+    end
+
 
 end

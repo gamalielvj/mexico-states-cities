@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>People</h1>
+<h3><%= link_to 'Add new Person', new_person_path %></h3>
+<p><%= "Rails app Time Zone Name: #{Time.zone.name}" %> </p>
+<p><%= "Rails app Time Zone now: #{Time.zone.now}" %> </p>
+<p><%= "System time (Server Time): #{Time.now}" %> </p>
 
 <table>
   <thead>
@@ -9,6 +13,8 @@
       <th>City</th>
       <th>State</th>
       <th>Country</th>
+      <th>Time Zone</th>
+      <th>Time Now</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +26,8 @@
         <td><%= person.city.name %></td>
         <td><%= person.state.name %></td>
         <td><%= person.country.name %></td>
+        <td><%= person.time_zone %></td>
+        <td><%= Time.current.in_time_zone(person.time_zone) %> </td>
         <td><%= link_to 'Show', person %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -30,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Person', new_person_path %>
+<h3><%= link_to 'Add new Person', new_person_path %></h3>

@@ -21,15 +21,20 @@
 
   <div class="field state">
     <%= form.label :state_id %>
-    <%= form.collection_select :state_id, @states, :id, :name, {:prompt => 'Please select a Country first...'},
+    <%= form.collection_select :state_id, @states, :id, :name, options = {:prompt => 'Please select a Country first...'},
     html_options = {class: "ui fluid search selection dropdown"} %>
   </div>
 
   <div class="field city">
     <%= form.label :city_id %>
-    <%= form.collection_select :city_id, @cities, :id, :name, {:prompt => 'Please select a Country and State first...'},
+    <%= form.collection_select :city_id, @cities, :id, :name, options = {:prompt => 'Please select a Country and State first...'},
     html_options = {class: "ui fluid search selection dropdown"} %>
+  </div>
 
+  <div class="field time_zone">
+    <%= form.label :time_zone %>
+    <%= form.collection_select :time_zone, @zones_by_country, :name, :name, options = {:prompt => 'Please select your Time Zone...'},
+    html_options = {class: "ui fluid search selection dropdown"} %>
   </div>
 
   <div class="actions">

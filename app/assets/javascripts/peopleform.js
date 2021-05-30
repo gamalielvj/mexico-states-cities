@@ -1,62 +1,35 @@
 $(document).on('turbolinks:load', function()
  {
-  // .prop Disable true false works without Semantic UI dropdown class. Thats why all add .parent.
-  //$("#person_state_id").prop("disabled", true); // States dropdown is disable while Country dropdown is empty
-  //$("#person_city_id").prop("disabled", true); // Cities dropdown is disable while State dropdown is empty
 
-
-  // Disable Dropdowns,
-  //$("#person_state_id").parent('div').addClass("disabled");
+  // Disable Dropdowns States Cities and Time Zones
   $("#person_state_id").prop("disabled", true);
-  //$("#person_city_id").parent('div').addClass("disabled");
   $("#person_city_id").prop("disabled", true);
+  $("#person_time_zone").prop("disabled", true);
 
 
   // Country - States    WORKS
   $("#person_country_id").change(function(){
       $(this).addClass( "selected" );
     	var country = $(this).val();
-      console.log("Country id: " + country);
-    	if(country == ''){
-        //console.log("if country == ");
-        // Disable States dropdown
-           $("#person_state_id").empty();
-           //$("#person_state_id").prop("disabled", true);
-           $("#person_state_id").val('');
-           $("#person_state_id").append('<option>Please select a State...</option>');        // Disable Cities dropdown
-
-        // Disable Cities dropdown
-          $("#person_city_id").empty();
-          //$("#person_city_id").prop("disabled", true);
-          $("#person_city_id").val('');
-          $("#person_city_id").append('<option>Please select a State first...</option>');
 
 
-    	}else{
-        //$("#person_state_id").prop("disabled", false);
-        //$("div.ui.fluid.search.selection.dropdown.disabled").removeClass("disabled");
-        //$(".field.disabled").removeClass("disabled");
-
-
-        //Works
-        //$(".field.state").removeClass("disabled");
+        // Enable Dropdowns States and Time Zones
         $("#person_state_id").parent().removeClass("disabled");
         $("#person_state_id").prop("disabled", false);
+        //$("#person_state_id").append('<option>Please select a State...</option>');
 
-        //$("#person_state_id").parent('div').removeClass("disabled");
-        //$("#person_city_id").parent('div').removeClass("disabled");
-
-
-          //$("#person_state_id").prop("disabled", false);
-          $("#person_state_id").append('<option>Please select a State...</option>');
-          //console.log("Country - States (Enable)")
+        $("#person_time_zone").parent().removeClass("disabled");
+        $("#person_time_zone").prop("disabled", false);
+        //$("#person_time_zone").append('<option>Please select a Time Zone...</option>');
 
         // Disable Cities dropdown
           $("#person_city_id").empty();
+          $("#person_city_id").val('');
           $("#person_city_id").append('<option>Please select a State first...</option>');
-          //$("#person_city_id").prop("disabled", true);
+          $("#person_city_id").parent('div').addClass("disabled");
+          $("#person_city_id").prop("disabled", true);
 
-    	//}
+
     	$.ajax({
   	    url: "/states",
   	    method: "GET",
@@ -67,7 +40,8 @@ $(document).on('turbolinks:load', function()
   	    },
   	    success: function (response) {
   	      	console.log(response);
-  	      	var states = response["states"];
+            // Fill States by Country selected
+            var states = response["states"];
             $("#person_state_id").empty();
             $("#person_state_id").val('');
             $("#person_state_id").append('<option>Please select a State...</option>');
@@ -75,9 +49,18 @@ $(document).on('turbolinks:load', function()
   	      	for(var i = 0; i < states.length; i++){
   	      		$("#person_state_id").append('<option value="' + states[i]["id"] + '">' + states[i]["name"] + '</option>');
   	      	}
+
+            // Fill time Zones by Country selected
+            var timezones = response["zones"];
+            $("#person_time_zone").empty();
+            $("#person_time_zone").val('');
+            $("#person_time_zone").append('<option>Please select a Time Zone...</option>');
+
+  	      	for(var i = 0; i < timezones.length; i++){
+  	      		$("#person_time_zone").append('<option value="' + timezones[i]["name"] + '">' + timezones[i]["name"] + '</option>');
+  	      	}
   	    }
     	});
-    }; // End Else
   });
 
   // States - Cities "
@@ -94,13 +77,19 @@ $(document).on('turbolinks:load', function()
           $("#person_city_id").empty();
           $("#person_city_id").val('');
           $("#person_city_id").append('<option>Please select a State first...</option>');
-          //$("#person_city_id").prop("disabled", true);
+          $("#person_city_id").parent('div').addClass("disabled");
+          $("#person_city_id").prop("disabled", true);
 
 
     	}else{
-        //$(".field.city").removeClass("disabled");
+
+        // Enable Cities Dropdown
+        $("#person_city_id").empty();
+        $("#person_city_id").val('');
+        $("#person_city_id").append('<option>Please select a City...</option>');
         $("#person_city_id").parent('div').removeClass("disabled");
         $("#person_city_id").prop("disabled", false);
+
 
     	//}
     	$.ajax({
@@ -114,10 +103,6 @@ $(document).on('turbolinks:load', function()
   	    success: function (response) {
   	      	console.log(response);
   	      	var cities = response["cities"];
-  	      	 $("#person_city_id").empty();
-             $("#person_city_id").val('');
-  	      	 $("#person_city_id").append('<option>Please select a City...</option>');
-
 
             for(var i = 0; i < cities.length; i++){
   	      		$("#person_city_id").append('<option value="' + cities[i]["id"] + '">' + cities[i]["name"] + '</option>');

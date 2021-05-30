@@ -2,11 +2,11 @@
 # Mexico-states-cities
 
 Simple web application (still working on it, mainly backend, I just want functionality).
-I get all the data (JSON) of Mexico, States and Cities, and imported to a PostgreSQL database. Added a Person model just to interact with a form with filters select options by Country - States - Cities. (In this case is only Mexico, but you can add more data if you want, check it out ./db/seeds.rb).
+I get all the data (JSON) of Mexico, States and Cities, and imported to a PostgreSQL database. Added a Person model just to interact with a form with filters select options by Country - States - Cities and Time Zones. (In this case is only Mexico, but you can add more data if you want, check it out ./db/seeds.rb).
 
 What it does
 - CRUD, Basic or default forms. (Countries - States - Cities)
-- CRUD, advance form. Dynamic dependent drop down list with Jquery (People)
+- CRUD, advance form. Dynamic dependent drop down list with Jquery (People , peopleform.js)
 - Show page of a Country and it list the states its owns.
 - Show page of a State and it list the cities its owns.
 
