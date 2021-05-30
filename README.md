@@ -12,6 +12,7 @@ What it does
 
 
 What it doesn't do
+- edit form, needs to fix the Dropdowns.
 - [Conditional GET](https://apidock.com/rails/ActionController/ConditionalGet/fresh_when).
 - CACHE or something (index pages, display lists takes too much time).
 - Timestamps.
